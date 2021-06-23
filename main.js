@@ -21,6 +21,7 @@ function addtodo() {
 
     //create listDiv
     const listDiv = document.createElement('div');
+    listDiv.classList.add('listdiv');
 
     //create list
     const list = document.createElement('li');
@@ -28,10 +29,12 @@ function addtodo() {
     list.innerText = `${inputfield.value}`
     //create done/undone button
     const done = document.createElement('button');
+    done.classList.add('done-undone');
     done.innerText = "done";
     done.addEventListener('click',donebutton);
     //create delete button
     const delbutton = document.createElement('button');
+    delbutton.classList.add('delbutton');
     delbutton.addEventListener('click',deltodo)
     delbutton.innerText = "delete";
 
@@ -51,13 +54,13 @@ function donebutton(event) {
   const thisnode =  event.target.parentNode.firstChild;
   if(thisnode.className === "undone"){
     console.log("done/undone");
-    event.target.parentNode.firstChild.classList.add("done");
-    event.target.parentNode.firstChild.classList.remove("undone");
+    thisnode.classList.add("done");
+    thisnode.classList.remove("undone");
     event.target.parentNode.childNodes[1].innerText = "undone";
   }
   else{
-    event.target.parentNode.firstChild.classList.add("undone");
-    event.target.parentNode.firstChild.classList.remove("done");
+    thisnode.classList.add("undone");
+    thisnode.classList.remove("done");
     event.target.parentNode.childNodes[1].innerText = "done";
   }
 }
