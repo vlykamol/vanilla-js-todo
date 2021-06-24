@@ -6,18 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css">
   <title>Todo App (vanilla javascript)</title>
+  <link rel="shortcut icon" type="image/jpg" href="./imgs/favicon.ico"/>
 </head>
 <body>
   <div class="main-div">
     <h1>Todo</h1>
-      <form class="todo-form">
-        <input type="text"
-        placeholder="add todo"
-        >
-        <button type="submit" onclick="addtodo">add</button>
-      </form>
+    <form class="todo-form" id = "todo-form">
+      <label for="todo-input">add todo:</label>
+      <input type="text" placeholder="add todo" id="todo-input" autofocus>
+      <button type="submit" onclick="addtodo" id="add-button">add</button>
+    </form>
     <div class="todo-container">
-      <ul class="todo-list"></ul>
+      <ul class="todo-list" id="todo-list"></ul>
     </div>
   </div>
   <script src = "./main.js"/>

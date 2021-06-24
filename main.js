@@ -1,11 +1,10 @@
 
-
 const todolist = [];
 
-const todoform = document.querySelector('form');
-const addbutton = document.querySelector('button');
-const inputfield = document.querySelector('input');
-const todolistul = document.querySelector('ul');
+const todoform = document.getElementById('todo-form');
+const addbutton = document.getElementById('add-button');
+const inputfield = document.getElementById('todo-input');
+const todolistul = document.getElementById('todo-list');
 
 todoform.addEventListener('submit', event => {
   event.preventDefault();
@@ -44,13 +43,13 @@ function addtodo() {
     listDiv.appendChild(delbutton);
 
     todolistul.appendChild(listDiv);
-    
+
     inputfield.value = '';
   }
 }
 
 function donebutton(event) {
-  
+
   const thisnode =  event.target.parentNode.firstChild;
   if(thisnode.className === "undone"){
     console.log("done/undone");
