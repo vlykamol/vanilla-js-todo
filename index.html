@@ -9,6 +9,27 @@
   <link rel="shortcut icon" type="image/jpg" href="./imgs/favicon.ico"/>
 </head>
 <body>
+  <nav class="navbar">
+    <div class="logo">
+      <a href="#">TODO</a>
+    </div>
+    <ul class="navlist">
+      <li>
+        <a href="#">sign up</a>
+      </li>
+      <li>
+        <a href="#">sign in</a>
+      </li>
+      <li>
+        <a href="#">log out</a>
+      </li>
+      <li>
+        <a href="#">account</a>
+      </li>
+    </ul>
+  </nav>
+
+
   <div class="main-div">
     <h1>Todo</h1>
     <form class="todo-form" id = "todo-form">
@@ -19,7 +40,41 @@
     <div class="todo-container">
       <ul class="todo-list" id="todo-list"></ul>
     </div>
+
+    <div class="sign-up">
+      <h1>sign up</h1>
+      <form class="signup-form">
+        <label for="first-name">first name:</label>
+        <input type="text" id="first-name" name="first-name" placeholder="enter your first name">
+        <label for="last-name">last name:</label>
+        <input type="text" id="last-name" name="last-name" placeholder="enter your last name">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="enter your email">
+        <label for="password">password:</label>
+        <input type="password" id="password" name="password" placeholder="enter password">
+        <label for="repassword">verify password:</label>
+        <input type="password" id="repassword" name="repassword" placeholder="enter password">
+        <button type="submit" onclick="signup" id="signup-btn">Sign Up</button>
+      </form>
+    </div>
+
+    <div class="sign-in">
+      <h1>sign in</h1>
+      <form class="signin-form">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="enter your email">
+        <label for="password">password:</label>
+        <input type="password" id="password" name="password" placeholder="enter password">
+        <button type="submit" onclick="signin" id="signin-btn">Sign Up</button>
+      </form>
+    </div>
+
+
   </div>
+
+
+
+
   <script src = "./main.js"/>
 </body>
 </html>
