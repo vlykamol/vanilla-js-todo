@@ -68,3 +68,24 @@ function deltodo(event) {
   console.log('delete todo');
   event.target.parentNode.remove();
 }
+
+//signup signin
+
+
+const signup = document.getElementById('signup');
+const signupdiv = document.getElementById('signup-div');
+
+signup.addEventListener('click',(e) => {
+  console.log("hey");
+  signupdiv.style.display = signupdiv.style.display === "none" ? "block" : "none";
+  signindiv.style.display = "none";
+})
+
+const signin = document.getElementById('signin');
+const signindiv = document.getElementById('signin-div');
+
+signin.addEventListener('click',(e) => {
+  console.log("hey");
+  signindiv.style.display = signindiv.style.display === "none" ? "block" : "none";
+  signupdiv.style.display = "none";
+})

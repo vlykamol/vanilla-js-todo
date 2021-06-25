@@ -15,56 +15,57 @@
     </div>
     <ul class="navlist">
       <li>
-        <a href="#">sign up</a>
+        <a href="#" class="logged-out" id="signup">sign up</a>
       </li>
       <li>
-        <a href="#">sign in</a>
+        <a href="#" class="logged-out" id="signin">sign in</a>
       </li>
       <li>
-        <a href="#">log out</a>
+        <a href="#" class="logged-in" id="logout">log out</a>
       </li>
       <li>
-        <a href="#">account</a>
+        <a href="#" class="logged-in">account</a>
       </li>
     </ul>
   </nav>
 
 
   <div class="main-div">
-    <h1>Todo</h1>
-    <form class="todo-form" id = "todo-form">
-      <label for="todo-input">add todo:</label>
-      <input type="text" placeholder="add todo" id="todo-input" autofocus>
-      <button type="submit" onclick="addtodo" id="add-button">add</button>
-    </form>
-    <div class="todo-container">
-      <ul class="todo-list" id="todo-list"></ul>
+    <div class="todo-content">
+      <h1>Todo</h1>
+      <form class="todo-form" id = "todo-form">
+        <input type="text" placeholder="add todo" id="todo-input" autofocus>
+        <button type="submit" onclick="addtodo" id="add-button">add</button>
+      </form>
+      <div class="todo-container">
+        <ul class="todo-list" id="todo-list"></ul>
+      </div>
     </div>
 
-    <div class="sign-up">
+    <div class="sign-up" id="signup-div">
       <h1>sign up</h1>
-      <form class="signup-form">
+      <form class="signup-form" id="signup-form">
         <label for="first-name">first name:</label>
-        <input type="text" id="first-name" name="first-name" placeholder="enter your first name">
+        <input type="text" id="first-name" name="first-name" placeholder="enter your first name" required>
         <label for="last-name">last name:</label>
-        <input type="text" id="last-name" name="last-name" placeholder="enter your last name">
+        <input type="text" id="last-name" name="last-name" placeholder="enter your last name" required>
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="enter your email">
+        <input type="email" id="signup-email" name="email" placeholder="enter your email" required>
         <label for="password">password:</label>
-        <input type="password" id="password" name="password" placeholder="enter password">
+        <input type="password" id="signup-password" name="password" placeholder="enter password" required>
         <label for="repassword">verify password:</label>
-        <input type="password" id="repassword" name="repassword" placeholder="enter password">
+        <input type="password" id="repassword" name="repassword" placeholder="enter password" required>
         <button type="submit" onclick="signup" id="signup-btn">Sign Up</button>
       </form>
     </div>
 
-    <div class="sign-in">
+    <div class="sign-in" id="signin-div">
       <h1>sign in</h1>
-      <form class="signin-form">
+      <form class="signin-form" id="signin-form">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="enter your email">
+        <input type="email" id="signin-email" name="email" placeholder="enter your email">
         <label for="password">password:</label>
-        <input type="password" id="password" name="password" placeholder="enter password">
+        <input type="password" id="signin-password" name="password" placeholder="enter password">
         <button type="submit" onclick="signin" id="signin-btn">Sign Up</button>
       </form>
     </div>
@@ -73,8 +74,36 @@
   </div>
 
 
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyBzPQqszNRgvLegEQb6986WP5emI0V548Y",
+      authDomain: "todoauth-272f8.firebaseapp.com",
+      projectId: "todoauth-272f8",
+      appId: "1:83212437858:web:008927693ace12955e443b",
+      measurementId: "G-YQB78X3ZWQ"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    //refernces
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+  </script>
 
 
-  <script src = "./main.js"/>
+  <script src = "./auth.js"></script>
+  <script src = "./main.js"></script>
+
+
 </body>
 </html>
