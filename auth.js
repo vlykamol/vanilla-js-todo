@@ -1,5 +1,14 @@
-//signup
 
+//listen for auth status changes
+auth.onAuthStateChanged(user => {
+  if(user){
+    console.log("user logged in", user);
+  }else{
+    console.log("user logged out");
+  }
+})
+
+//signup
 const signupForm = document.querySelector('#signup-form');
 signupForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -20,9 +29,7 @@ signupForm.addEventListener('submit', (e) => {
 const logout = document.querySelector('#logout');
 logout.addEventListener('click', (e) => {
   e.preventDefault();
-  auth.signOut().then(() => {
-    console.log('signed out');
-  })
+  auth.signOut();
 });
 
 //login
@@ -32,8 +39,14 @@ signinForm.addEventListener('submit', (e) => {
   const signin_email = signinForm['signin-email'].value;
   const signin_password = signinForm['signin-password'].value;
   auth.signInWithEmailAndPassword(signin_email, signin_password).then(cred => {
-    console.log(cred.user);
     signinForm.reset();
     signindiv.style.display = "none";
   })
+})
+
+
+//get data
+
+db.collection('todos').get().then(snapshot => {
+  console.log(snapshot.docs);
 })
