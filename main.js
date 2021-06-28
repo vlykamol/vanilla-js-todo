@@ -16,7 +16,7 @@ function addtodo() {
   if(inputfield.value === '') return;
   else{
     todolist.push(inputfield.value);
-    console.log(todolist);
+    // console.log(todolist);
 
     //create listDiv
     const listDiv = document.createElement('div');
@@ -52,7 +52,7 @@ function donebutton(event) {
 
   const thisnode =  event.target.parentNode.firstChild;
   if(thisnode.className === "undone"){
-    console.log("done/undone");
+    // console.log("done/undone");
     thisnode.classList.add("done");
     thisnode.classList.remove("undone");
     event.target.parentNode.childNodes[1].innerText = "undone";
@@ -65,7 +65,7 @@ function donebutton(event) {
 }
 
 function deltodo(event) {
-  console.log('delete todo');
+  // console.log('delete todo');
   event.target.parentNode.remove();
 }
 
@@ -76,7 +76,7 @@ const signup = document.getElementById('signup');
 const signupdiv = document.getElementById('signup-div');
 
 signup.addEventListener('click',(e) => {
-  console.log("hey");
+  // console.log("hey");
   signupdiv.style.display = signupdiv.style.display === "none" ? "block" : "none";
   signindiv.style.display = "none";
 })

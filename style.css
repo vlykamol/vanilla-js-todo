@@ -146,3 +146,11 @@ h1{
   width: 98%;
   font-size: 24px;
 }
+
+.logged-in{
+  display: none;
+}
+
+.logged-out{
+  display: none;
+}

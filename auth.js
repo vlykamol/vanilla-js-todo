@@ -1,10 +1,25 @@
 
+
+var logindivs = document.getElementsByClassName('logged-in');
+var logoutdivs = document.getElementsByClassName('logged-out');
 //listen for auth status changes
 auth.onAuthStateChanged(user => {
   if(user){
     console.log("user logged in", user);
+    for (var i = 0; i < logindivs.length; i++) {
+      logindivs[i].style.display = 'block';
+    }
+    for (var i = 0; i < logoutdivs.length; i++) {
+      logoutdivs[i].style.display = 'none';
+    }
   }else{
     console.log("user logged out");
+    for (var i = 0; i < logoutdivs.length; i++) {
+      logoutdivs[i].style.display = 'block';
+    }
+    for (var i = 0; i < logindivs.length; i++) {
+      logindivs[i].style.display = 'none';
+    }
   }
 })
 
@@ -18,7 +33,7 @@ signupForm.addEventListener('submit', (e) => {
   const email = signupForm['signup-email'].value;
   const password = signupForm['signup-password'].value;
 
-  console.log(firstName, lastName, email, password);
+  // console.log(firstName, lastName, email, password);
   auth.createUserWithEmailAndPassword(email, password).then(cred => {
     signupForm.reset();
     signupdiv.style.display = "none";
@@ -48,5 +63,5 @@ signinForm.addEventListener('submit', (e) => {
 //get data
 
 db.collection('todos').get().then(snapshot => {
-  console.log(snapshot.docs);
+  // console.log(snapshot.docs);
 })
