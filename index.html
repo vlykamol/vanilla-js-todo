@@ -5,6 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css">
+
+  <script src = "./auth.js" defer></script>
+  <script src = "./main.js" defer></script>
+
   <title>Todo App (vanilla javascript)</title>
   <link rel="shortcut icon" type="image/jpg" href="./imgs/favicon.ico"/>
 </head>
@@ -38,7 +42,7 @@
         <button type="submit" onclick="addtodo" id="add-button">add</button>
       </form>
       <div class="todo-container">
-        <ul class="todo-list" id="todo-list"></ul>
+        <ol class="todo-list" id="todo-list"></ol>
       </div>
     </div>
 
@@ -66,7 +70,7 @@
         <input type="email" id="signin-email" name="email" placeholder="enter your email">
         <label for="password">password:</label>
         <input type="password" id="signin-password" name="password" placeholder="enter password">
-        <button type="submit" onclick="signin" id="signin-btn">Sign Up</button>
+        <button type="submit" onclick="signin" id="signin-btn">Sign in</button>
       </form>
     </div>
 
@@ -99,11 +103,6 @@
     const db = firebase.firestore();
 
   </script>
-
-
-  <script src = "./auth.js"></script>
-  <script src = "./main.js"></script>
-
 
 </body>
 </html>

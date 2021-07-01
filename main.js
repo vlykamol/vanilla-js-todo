@@ -4,7 +4,7 @@ const todolist = [];
 const todoform = document.getElementById('todo-form');
 const addbutton = document.getElementById('add-button');
 const inputfield = document.getElementById('todo-input');
-const todolistul = document.getElementById('todo-list');
+const todolistol = document.getElementById('todo-list');
 
 todoform.addEventListener('submit', event => {
   event.preventDefault();
@@ -20,29 +20,31 @@ function addtodo() {
 
     //create listDiv
     const listDiv = document.createElement('div');
-    listDiv.classList.add('listdiv');
+    listDiv.classList.add('listdiv', 'dragables');
+    listDiv.setAttribute('draggable','true');
 
     //create list
     const list = document.createElement('li');
     list.classList.add("undone");
     list.innerText = `${inputfield.value}`
+
     //create done/undone button
     const done = document.createElement('button');
     done.classList.add('done-undone');
     done.innerText = "done";
     done.addEventListener('click',donebutton);
+
     //create delete button
     const delbutton = document.createElement('button');
     delbutton.classList.add('delbutton');
     delbutton.addEventListener('click',deltodo)
     delbutton.innerText = "delete";
 
-
     listDiv.appendChild(list);
     listDiv.appendChild(done);
     listDiv.appendChild(delbutton);
 
-    todolistul.appendChild(listDiv);
+    todolistol.appendChild(listDiv);
 
     inputfield.value = '';
   }
@@ -69,9 +71,36 @@ function deltodo(event) {
   event.target.parentNode.remove();
 }
 
+//dragaing 
+todolistol.addEventListener('click', () => {
+  const dragables = document.querySelectorAll('.dragables');
+  dragables.forEach(dragable => {
+    dragable.addEventListener('dragstart', () => {
+      dragable.classList.add('dragging');
+    })
+    dragable.addEventListener('dragend', () => {
+      dragable.classList.remove('dragging');
+    })
+  })
+  todolistol.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    const afterElement = getDragAfterElement(todolistol, e.clientY);
+    const dragable = document.querySelector('.dragging');
+    afterElement == null ? todolistol.appendChild(dragable) : todolistol.insertBefore(dragable, afterElement);
+  })
+})
+
+function getDragAfterElement(todolistol, y) {
+  const dragableElements = [...todolistol.querySelectorAll('.dragables:not(.dragging)')];
+
+  return dragableElements.reduce((closest, child) => {
+    const box = child.getBoundingClientRect();
+    const offset = y - box.top - box.height/2;
+    return offset < 0 && offset > closest.offset ?  {offset : offset, element : child} : closest;
+  }, {offset: Number.NEGATIVE_INFINITY}).element;
+}
+
 //signup signin
-
-
 const signup = document.getElementById('signup');
 const signupdiv = document.getElementById('signup-div');
 

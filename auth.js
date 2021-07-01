@@ -1,4 +1,7 @@
-
+//get data
+db.collection('todos').get().then(snapshot => {
+  // console.log(snapshot.docs);
+})
 
 var logindivs = document.getElementsByClassName('logged-in');
 var logoutdivs = document.getElementsByClassName('logged-out');
@@ -59,9 +62,3 @@ signinForm.addEventListener('submit', (e) => {
   })
 })
 
-
-//get data
-
-db.collection('todos').get().then(snapshot => {
-  // console.log(snapshot.docs);
-})

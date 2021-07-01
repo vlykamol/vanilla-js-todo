@@ -154,3 +154,7 @@ h1{
 .logged-out{
   display: none;
 }
+
+.dragging{
+  opacity: 0.5;
+}
